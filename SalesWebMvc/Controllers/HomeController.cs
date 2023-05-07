@@ -20,9 +20,9 @@ namespace SalesWebMvc.Controllers
 
         public IActionResult Index()
         {
-            ViewData["Message"] = "Sales Web Mvc App from C# Course";
+            ViewData["Message"] = "Sales Web Mvc App from C# Course Teste clone";
             ViewData["Aluno"] = "Jonei Araujo";
-            ViewData["Professor"] = "Nelio Alves";
+            ViewData["Professor"] = "Nelio Alves"; 
             return View();
         }
 
