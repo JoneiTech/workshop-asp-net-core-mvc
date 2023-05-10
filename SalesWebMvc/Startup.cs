@@ -10,6 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using SalesWebMvc.Data;
+using Microsoft.AspNetCore.Connections.Features;
 
 namespace SalesWebMvc
 {
@@ -27,8 +28,11 @@ namespace SalesWebMvc
         {
             services.AddControllersWithViews();
 
+            var connectionString = Configuration.GetConnectionString("salesWebMvcContext");
+
             services.AddDbContext<SalesWebMvcContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("SalesWebMvcContext")));
+                    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString), builder =>
+                    builder.MigrationsAssembly("SalesWebMvc")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
